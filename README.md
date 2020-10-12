@@ -1,27 +1,65 @@
-# NgTabCom
+# TabCom
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
+TabCom provide with TabComService which is a angular wrapper service for commincating between different tab of a browser.
 
-## Development server
+Demo - 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Useage
 
-## Code scaffolding
+You will need to import `TabComModule` for that you want to communicate by adding following linr in the module.ts file.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+import { TabComModule } from 'tab-com';
+…
+@NgModule ({....
+  imports: [...,
+  TabComModule,
+…]
+})
+```
+You can communciate using a certain channel name by
 
-## Build
+```
+import { TabComModule } from 'tab-com';
+…
+@NgModule ({....
+  imports: [...,
+  TabComModule.forRoot({key:"<channel-name>"},
+…]
+})
+```
+## Usage 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Throughout the your module you can use `TabComService` in order to communicate with different tabs
 
-## Running unit tests
+### Send Data to different tabs
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can send data to different tab based on a topic by 
+```
+//In your component
+constructor( private tcs:TabComService) {
+}
 
-## Running end-to-end tests
+send(data){
+    this.tcs.send('send',data);
+}
+```
+### Listen to Data Send from other Tabs
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+You can listen to topic to which all the different tab are communicating by 
 
-## Further help
+```
+//In your component
+constructor( private tcs:TabComService) {
+}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+listen(){
+    this.tcs.subscribe('send').subscribe( data=>{
+      this.data = data;
+    });
+}
+```
+
+## License
+
+MIT License
