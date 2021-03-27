@@ -11,7 +11,7 @@ import { TabComService } from 'tab-com';
 export class TabComDemoComponent implements AfterViewInit {
 
   topic = 'topic';
-  data = "dadsad";
+  data = "";
   sub:Subscription;
   sendForm:FormGroup;
   subscribeForm:FormGroup;
@@ -29,16 +29,16 @@ export class TabComDemoComponent implements AfterViewInit {
     this.subscribe();
   }
   send(){
-    this.tcs.send(this.sendForm.value.topic,this.sendForm.value.data,true);
+    this.tcs.send(this.sendForm.value.topic,this.sendForm.value.data);
   }
   subscribe(){
     if(this.sub){
       this.sub.unsubscribe();
     }
     this.topic = this.subscribeForm.value.topic;
-    this.sub = this.tcs.subscribe(this.subscribeForm.value.topic).subscribe(data=>{
+    this.sub = this.tcs.subscribe(this.subscribeForm.value.topic).subscribe((data:string)=>{
       this.data = data;
       this.cdr.detectChanges();
-    })
+    });
   }
 }
