@@ -1,24 +1,65 @@
 # TabCom
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
+TabCom provide with TabComService which is a angular wrapper service for commincating between different tab of a browser.
 
-## Code scaffolding
+Demo - 
 
-Run `ng generate component component-name --project tab-com` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project tab-com`.
-> Note: Don't forget to add `--project tab-com` or else it will be added to the default project in your `angular.json` file. 
+# Useage
 
-## Build
+You will need to import `TabComModule` for that you want to communicate by adding following linr in the module.ts file.
 
-Run `ng build tab-com` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+import { TabComModule } from 'tab-com';
+…
+@NgModule ({....
+  imports: [...,
+  TabComModule,
+…]
+})
+```
+You can communciate using a certain channel name by
 
-## Publishing
+```
+import { TabComModule } from 'tab-com';
+…
+@NgModule ({....
+  imports: [...,
+  TabComModule.forRoot({key:"<channel-name>"},
+…]
+})
+```
+## Usage 
 
-After building your library with `ng build tab-com`, go to the dist folder `cd dist/tab-com` and run `npm publish`.
+Throughout the your module you can use `TabComService` in order to communicate with different tabs
 
-## Running unit tests
+### Send Data to different tabs
 
-Run `ng test tab-com` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can send data to different tab based on a topic by 
+```
+//In your component
+constructor( private tcs:TabComService) {
+}
 
-## Further help
+send(data){
+    this.tcs.send('send',data);
+}
+```
+### Listen to Data Send from other Tabs
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+You can listen to topic to which all the different tab are communicating by 
+
+```
+//In your component
+constructor( private tcs:TabComService) {
+}
+
+listen(){
+    this.tcs.subscribe('send').subscribe( data=>{
+      this.data = data;
+    });
+}
+```
+
+## License
+
+MIT License
