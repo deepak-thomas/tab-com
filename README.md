@@ -2,7 +2,7 @@
 
 TabCom provide with TabComService which is a angular wrapper service for commincating between different tab of a browser.
 
-Demo - 
+[Demo](https://deepak-thomas.github.io/tab-com/) 
 
 # Useage
 
