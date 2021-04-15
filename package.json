@@ -5,12 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "build:demo": "ng build tab-com-demo --prod --base-href https://deepak-thomas.github.io/tab-com-demo/",
+    "build:demo": "ng build tab-com-demo --prod --base-href https://deepak-thomas.github.io/tab-com/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "publish":"cd dist/tab-com && npm publish",
-    "publish:demo":"ngh --dir=dist/tab-com-demo"
+    "publish:demo":"ngh --dir=dist/tab-com"
   },
   "private": true,
   "dependencies": {

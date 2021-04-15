@@ -4,8 +4,9 @@
 <div class="row mb-px-15">
   <div class="col s6">
     <div [formGroup]="sendForm">
-      <h6>Lets start send</h6>
-      <mat-label>Topic</mat-label>
+      <h5>Send Data</h5>
+      <label>Data is send to the other tabs of the browser based on the topic</label>
+      <h6>Topic</h6>
       <input matInput placeholder="Topic used to send the data" formControlName="topic">
       <mat-label>Data</mat-label>
       <textarea matInput formControlName="data"></textarea>
@@ -13,10 +14,13 @@
     </div>
   </div>
   <div class="col s6">
-    <h6>Recieved Data</h6>
+    <h5>Recieved Data</h5>
     <div class="row">
+      <div class="col s12">
+        <label>Tab listens to the topic to recieve the data </label>
+      </div>
       <div class="col s8" [formGroup]="subscribeForm">
-        <mat-label >Topic</mat-label>
+        <h6>Topic</h6>
         <input matInput placeholder="Topic used to send the data" formControlName="topic">
       </div>
       <div class="col s4">

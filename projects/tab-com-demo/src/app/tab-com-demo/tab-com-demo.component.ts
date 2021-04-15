@@ -10,18 +10,18 @@ import { TabComService } from 'tab-com';
 })
 export class TabComDemoComponent implements AfterViewInit {
 
-  topic = 'topic';
+  topic = 'tab';
   data = "";
   sub:Subscription;
   sendForm:FormGroup;
   subscribeForm:FormGroup;
   constructor(private tcs:TabComService,private fb:FormBuilder, private cdr:ChangeDetectorRef) {
     this.sendForm = this.fb.group({
-      topic: ['topic', Validators.required],
+      topic: ['tab', Validators.required],
       data: ['',Validators.required]
     });
     this.subscribeForm = this.fb.group({
-      topic: ['topic',Validators.required]
+      topic: ['tab',Validators.required]
     });
    }
 
